@@ -1,18 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import { COLORS } from '../../constants';
-import Icon from '../Icon';
-import { getDisplayedValue } from './Select.helpers';
+import { COLORS } from '../../constants'
+import Icon from '../Icon'
+import { getDisplayedValue } from './Select.helpers'
 
 const Select = ({ label, value, onChange, children }) => {
-  const displayedValue = getDisplayedValue(value, children);
+  const displayedValue = getDisplayedValue(value, children)
 
   return (
-    <select value={value} onChange={onChange}>
+    <SelectElement value={value} onChange={onChange}>
       {children}
-    </select>
-  );
-};
+    </SelectElement>
+  )
+}
 
-export default Select;
+const SelectElement = styled.select`
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: ${COLORS.transparentGray15};
+  color: ${COLORS.gray700};
+  min-width: 190px;
+  border: none;
+  &:hover{
+    color: #000;
+  }
+  &:focus{
+    outline: 2px solid #4374CB;
+
+  }
+`
+
+export default Select
